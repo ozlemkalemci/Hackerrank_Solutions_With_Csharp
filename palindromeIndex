@@ -1,0 +1,45 @@
+class Result
+{
+ public static int palindromeIndex(string s)
+ {
+ int left = 0;
+ int right = s.Length - 1;
+ while (left < right)
+ {
+ if (s[left] != s[right])
+ {
+ if (IsPalindrome(s.Substring(left + 1, right - left)))
+ {
+ return left;
+ }
+ else if (IsPalindrome(s.Substring(left, right - left)))
+ {
+ return right;
+ }
+ else
+ {
+ return -1;
+ }
+ }
+ left++;
+ right--;
+ }
+ return -1;
+ }
+
+ public static bool IsPalindrome(string str)
+ {
+ int left = 0;
+ int right = str.Length - 1;
+ while (left < right)
+ {
+ if (str[left] != str[right])
+ {
+ return false;
+ }
+ left++;
+ right--;
+ }
+ return true;
+ }
+}
