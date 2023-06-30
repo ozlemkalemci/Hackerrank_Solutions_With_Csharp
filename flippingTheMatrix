@@ -1,0 +1,23 @@
+class Result
+{
+ public static int flippingMatrix(List<List<int>> matrix)
+ {
+ int n = matrix.Count;
+ int quarterSize = n / 2;
+ int maxSum = 0;
+ for (int i = 0; i < quarterSize; i++)
+ {
+ for (int j = 0; j < quarterSize; j++)
+ {
+ int topLeft = matrix[i][j];
+ int topRight = matrix[i][n - j - 1];
+ int bottomLeft = matrix[n - i - 1][j];
+ int bottomRight = matrix[n - i - 1][n - j - 1];
+ int maxCell = Math.Max(Math.Max(topLeft, topRight),
+Math.Max(bottomLeft, bottomRight));
+ maxSum += maxCell;
+ }
+ }
+ return maxSum;
+ }
+}
