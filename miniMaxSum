@@ -1,0 +1,23 @@
+class Result
+{
+
+    public static void miniMaxSum(List<int> arr)
+    {
+        long sum = 0;
+        long min = arr.Min();
+        long max = arr.Max();
+        foreach (int num in arr)
+        {
+            sum += num;
+        }
+
+        long maxSum = sum - min;
+        long minSum = sum - max;
+
+        Console.Write(minSum);
+        Console.Write(" ");
+        Console.Write(maxSum);
+
+    }
+
+}
