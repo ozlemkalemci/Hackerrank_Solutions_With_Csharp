@@ -1,0 +1,41 @@
+class Result
+{
+
+public static string caesarCipher(string s, int k)
+{
+    int rotation = k % 26;
+    
+    string alphabet = "abcdefghijklmnopqrstuvwxyz";
+    string rotatedAlphabet = alphabet.Substring(rotation) + alphabet.Substring(0, rotation);
+    
+    string upperAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    string rotatedUpperAlphabet = upperAlphabet.Substring(rotation) + upperAlphabet.Substring(0, rotation);
+    
+    string encryptedSentence = string.Empty;
+
+    for (int x = 0; x < s.Length; x++)
+    {
+        char currentChar = s[x];
+        if (Char.IsLetter(currentChar))
+        {
+            if (Char.IsLower(currentChar))
+            {
+                int index = alphabet.IndexOf(currentChar);
+                char encryptedChar = rotatedAlphabet[index];
+                encryptedSentence += encryptedChar;
+            }
+            else
+            {
+                int index = upperAlphabet.IndexOf(currentChar);
+                char encryptedChar = rotatedUpperAlphabet[index];
+                encryptedSentence += encryptedChar;
+            }
+        }
+        else
+        {
+            encryptedSentence += currentChar;
+        }
+    }
+    return encryptedSentence;
+}
+}
