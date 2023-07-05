@@ -1,0 +1,19 @@
+ public static string timeConversion(string s)
+    {
+        string time = s.ToUpper();
+        
+        if (time.Contains("AM"))
+    {
+        time = time.Replace("AM", "");
+        DateTime dateTime = DateTime.ParseExact(time, "hh:mm:ss", CultureInfo.InvariantCulture);
+        time = dateTime.ToString("HH:mm:ss");
+    }
+    else if (time.Contains("PM"))
+    {
+        time = time.Replace("PM", "");
+        DateTime dateTime = DateTime.ParseExact(time, "hh:mm:ss", CultureInfo.InvariantCulture);
+        dateTime = dateTime.AddHours(12);
+        time = dateTime.ToString("HH:mm:ss");
+    }
+    return time;
+    }
