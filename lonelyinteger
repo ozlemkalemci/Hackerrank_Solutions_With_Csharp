@@ -1,0 +1,27 @@
+public static int lonelyinteger(List<int> a)
+{
+    List<int> duplicatedList = new List<int>();
+    for (int i = 0; i < a.Count; i++)
+    {
+        for (int y = i + 1; y < a.Count; y++)
+        {
+            if (a[i] == a[y])
+            {
+                if (!duplicatedList.Contains(a[i]))
+                {
+                    duplicatedList.Add(a[i]);
+                }
+            }
+        }
+    }
+
+    List<int> lonelyInteger = a.Except(duplicatedList).ToList();
+    if (lonelyInteger.Count == 0)
+    {
+        return 0;
+    }
+    else
+    {
+        return lonelyInteger[0];
+    }
+}
